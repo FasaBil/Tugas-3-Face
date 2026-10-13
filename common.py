@@ -10,11 +10,10 @@ DATASET_DIR = os.path.join(BASE_DIR, "dataset")      # dataset/<train|test>/<Nam
 MODEL_DIR = os.path.join(BASE_DIR, "model")
 MODEL_PATH = os.path.join(MODEL_DIR, "face-model.yml")
 LABELS_PATH = os.path.join(MODEL_DIR, "labels.json")
-THRESHOLD_PATH = os.path.join(MODEL_DIR, "threshold.txt")
 EVAL_PATH = os.path.join(MODEL_DIR, "eval_summary.json")
 
 FACE_SIZE = (160, 160)
-DEFAULT_THRESHOLD = 80.0   # jarak LBPH maksimum agar dianggap dikenali (kecil = mirip)
+DEFAULT_THRESHOLD = 120.0  # jarak LBPH maksimum agar dianggap dikenali (kecil = mirip); 100 = nilai di slide dosen
 UNKNOWN = "Unknown"
 
 
@@ -86,12 +85,8 @@ def load_model():
 
 
 def get_threshold():
-    """Dari model/threshold.txt jika ada, jika tidak DEFAULT_THRESHOLD."""
-    try:
-        with open(THRESHOLD_PATH) as f:
-            return float(f.read().strip())
-    except (OSError, ValueError):
-        return DEFAULT_THRESHOLD
+    """Threshold jarak = DEFAULT_THRESHOLD di atas (tidak ada file lain yang bisa menimpanya)."""
+    return DEFAULT_THRESHOLD
 
 
 def identity_distances(recognizer, face):
