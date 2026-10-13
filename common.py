@@ -13,7 +13,7 @@ LABELS_PATH = os.path.join(MODEL_DIR, "labels.json")
 EVAL_PATH = os.path.join(MODEL_DIR, "eval_summary.json")
 
 FACE_SIZE = (160, 160)
-DEFAULT_THRESHOLD = 120.0  # jarak LBPH maksimum agar dianggap dikenali (kecil = mirip); 100 = nilai di slide dosen
+DEFAULT_THRESHOLD = 100.0  # jarak LBPH maksimum agar dianggap dikenali (kecil = mirip); 100 = nilai di slide dosen
 UNKNOWN = "Unknown"
 
 
