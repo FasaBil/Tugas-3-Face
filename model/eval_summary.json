@@ -1,0 +1,10 @@
+{
+  "threshold": 55.0,
+  "overall_pct": 81.66666666666667,
+  "per_person_pct": {
+    "Aida": 82.5,
+    "Fasa": 62.5,
+    "Tazkia": 100.0
+  },
+  "total_test": 120
+}
