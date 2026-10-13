@@ -23,8 +23,14 @@ FONT = cv2.FONT_HERSHEY_SIMPLEX
 
 
 def similarity(dist):
-    """Skor kemiripan 0-100 = 100 - jarak LBPH (seperti slide dosen). Bukan akurasi."""
-    return max(0, min(100, int(round(100 - dist))))
+    """Menghitung persentase kemiripan berdasarkan jarak dan threshold aktif."""
+    threshold = get_threshold()
+    if dist >= threshold:
+        return 0
+    # Mengonversi jarak (0 s.d. threshold) menjadi skala persentase (100% s.d. sekitar 40-50%)
+    # Atau rumus proporsional agar nilai di bawah threshold menghasilkan persentase yang tinggi:
+    score = int(round((1.0 - (dist / threshold)) * 60.0 + 40.0))
+    return max(0, min(100, score))
 
 
 def recognize_frame(frame, cascade, recognizer, id2name, threshold):
